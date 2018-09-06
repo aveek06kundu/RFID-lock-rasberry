@@ -1,0 +1,10 @@
+Pi-Lock employs the use of a few object-oriented classes to make the source code more efficient, legible, and comprehensible. The classes are broken up into the following files:
+
+EntryLog
+Logs an entry in local SQLite db, and post data in JSON format to server
+ErrorLog
+Logs an error in local SQLite db
+Permission
+With the scanned RFID tag #, looks into local SQLite db for the matching information, and sets object’s instance variables to the record found, else to None
+SystemStats
+Records and saves the RPi’s CPU temperature, and RAM, CPU and SD-card usage in JSON format
