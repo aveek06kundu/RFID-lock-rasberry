@@ -1,0 +1,20 @@
+def LED(colorON):
+        if colorON == "green":                         # if parameter is 'green'
+            RPIO.output(conf.GREEN, True)              # Set green GPIO pin = True  / On
+            RPIO.output(conf.RED, False)               # Set red GPIO pin   = False / Off
+            RPIO.output(conf.BLUE, False)              # Set blue GPIO pin  = False / Off
+            time.sleep(1)
+ 
+        elif colorON == "red":
+            RPIO.output(conf.GREEN, False)
+            RPIO.output(conf.RED, True)
+            RPIO.output(conf.BLUE, False)
+            time.sleep(1)
+ 
+        elif colorON == "blue":
+            RPIO.output(conf.GREEN, False)
+            RPIO.output(conf.RED, False)
+            RPIO.output(conf.BLUE, True)
+ 
+        else:
+            return "Error"                               # Error if parameter is wrong
