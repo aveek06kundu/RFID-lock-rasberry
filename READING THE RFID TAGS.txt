@@ -1,0 +1,22 @@
+conf.ser.open()                                           # Open serial port
+ 
+def readCard():
+    try:
+        LED("blue")                                       # Turn on Blue LED
+        while True:                                       # Loop until card is scanned   
+            conf.ser.flushInput()                         # Clean out the serial port
+            LED("blue")
+            rfidData = conf.ser.readline().strip()        # Read input and format
+            print "Line: "
+            if len(rfidData) > 0:                            
+                rfidData = rfidData[1:13]                 # Get digits 1 to 13 of input
+                print "Card Scanned: ", rfidData
+                print findTag(rfidData)                   # Call findTag method, check database
+ 
+    except:
+        errorLog.classErrorLog(sys.exc_info())            # Log the error in the ErrorLog class
+ 
+    finally:
+        conf.ser.close()                                  # Close serial port
+        conf.db.close()                                   # Close SQLite database
+        RPIO.cleanup()                                    # Cleanup GPIO pins
